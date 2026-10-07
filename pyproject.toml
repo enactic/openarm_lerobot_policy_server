@@ -1,0 +1,57 @@
+# Copyright 2026 Enactic, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+[project]
+name = "openarm_lerobot_policy_server"
+version = "0.1.0"
+authors = [{ name = "Enactic, Inc." }]
+description = "LeRobot policy servers for OpenArm inference with dora-rs"
+license = { text = "Apache-2.0" }
+readme = "README.md"
+requires-python = ">=3.12"
+
+dependencies = [
+  "lerobot==0.6.1",
+  "pyarrow",
+]
+
+[project.urls]
+Changelog = "https://github.com/enactic/openarm_lerobot_policy_server/releases"
+Issues = "https://github.com/enactic/openarm_lerobot_policy_server/issues"
+Repository = "https://github.com/enactic/openarm_lerobot_policy_server"
+
+[project.scripts]
+openarm-lerobot-policy-server-docker = "openarm_lerobot_policy_server.docker:main"
+openarm-lerobot-policy-server-local = "openarm_lerobot_policy_server.local:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0",
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff.lint]
+extend-select = [
+  "D",   # pydocstyle
+  "UP"
+]
+
+[tool.ruff.lint.per-file-ignores]
+"!src/**.py" = ["D"]
