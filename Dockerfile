@@ -13,7 +13,7 @@
 # limitations under the License.
 
 FROM ghcr.io/astral-sh/uv:0.13.1 AS uv
-FROM python:3.12
+FROM python:3.15
 
 SHELL ["/bin/bash", "-c"]
 WORKDIR /project
